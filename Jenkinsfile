@@ -1,16 +1,18 @@
 pipeline{
-  agent any
-  environment{
-    TEST_VAR = 'My variable'
+  agent {
+    docker {
+      image 'node:21-alpine'
+    }
   }
+  
   stages{
+    stage("Test agent docker"){
+      steps{
+        sh 'node --version'
+      }
+    }
     stage("Test env variables"){
       steps{
-        echo "BRANCH_NAME: ${env.BRANCH_NAME}"
-        echo "CI: ${env.CI}"
-        echo "BRANCH_IS_PRIMARY: ${env.BRANCH_IS_PRIMARY}"
-        echo "BUILD_NUMBER: ${env.BUILD_NUMBER}"
-        echo "JENKINS_URL: ${env.JENKINS_URL}"
         sh 'printenv'
       }
     }
