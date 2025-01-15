@@ -1,20 +1,13 @@
 pipeline{
-  agent {
-    docker {
-      image 'node:21-alpine'
-    }
+  agent any
+  tools {
+    nodejs 'nodejs'
   }
-  
   stages{
     stage("Test agent docker"){
       steps{
         sh 'node --version'
         sh 'npm -v'
-      }
-    }
-    stage("Test env variables"){
-      steps{
-        sh 'printenv'
       }
     }
   }
