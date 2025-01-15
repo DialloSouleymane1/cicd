@@ -1,5 +1,8 @@
 pipeline{
   agent any
+  environment{
+    TEST_VAR = 'My variable'
+  }
   stages{
     stage("Test env variables"){
       steps{
@@ -8,6 +11,7 @@ pipeline{
         echo "BRANCH_IS_PRIMARY: ${env.BRANCH_IS_PRIMARY}"
         echo "BUILD_NUMBER: ${env.BUILD_NUMBER}"
         echo "JENKINS_URL: ${env.JENKINS_URL}"
+        sh 'printenv'
       }
     }
   }
