@@ -1,14 +1,9 @@
 pipeline{
-  agent {
-    docker {
-      image 'node:latest'
-    }
-  }
+  agent any
   stages{
     stage("Test agent docker"){
       steps{
-        sh 'node --version'
-        sh 'npm -v'
+        sh 'docker -v'
       }
     }
   }
