@@ -1,19 +1,13 @@
 pipeline{
   agent any
   stages{
-    stage("Build"){
+    stage("Test env variables"){
       steps{
-        echo "Building the application"
-      }
-    }
-    stage("Test"){
-      steps{
-        echo "Testing the application"
-      }
-    }
-    stage("Deploy"){
-      steps{
-        echo "Deploying the application"
+        echo "BRANCH_NAME: ${env.BRANCH_NAME}"
+        echo "CI: ${env.CI}"
+        echo "BRANCHE_IS_PRIMARY: ${env.BRANCHE_IS_PRIMARY}"
+        echo "BUILD_NUMBER: ${env.BUILD_NUMBER}"
+        echo "JENKINS_URL: ${env.JENKINS_URL}"
       }
     }
   }
