@@ -26,8 +26,8 @@ pipeline{
         submitterParameter 'USER_SUBMIT'
       }
       steps{
-        echo "should deploy user: ${params.PERSON}"
-        echo "Version to be deployed: ${params.VERSION}"
+        echo "should deploy user: ${PERSON}"
+        echo "Version to be deployed: ${VERSION}"
         echo "User who deployed : ${USER_SUBMIT}"
         echo "Deployed succefully !"
       }
