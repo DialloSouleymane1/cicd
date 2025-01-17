@@ -5,10 +5,10 @@ pipeline{
   }
   stages{
     stage("Test agent docker"){
-      option {
-        timestamps()
-      }
       steps{
+        option {
+          timestamps()
+        }
         sh 'npm -v'
       }
     }
