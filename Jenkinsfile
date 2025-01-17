@@ -3,7 +3,7 @@ pipeline{
   stages{
     stage("Test agent docker"){
       steps{
-        sh 'docker -v'
+        sh 'npm -v'
       }
     }
   }
