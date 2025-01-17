@@ -1,7 +1,8 @@
 pipeline{
   agent any
-  tools {
-    nodejs 'nodejs-22-06-0'
+  parameters {
+    string(name: 'NAME', defaultValue: 'Souley Jenkins', description: 'Who should I say hello to?')
+    text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
   }
   stages{
     stage("Build"){
@@ -9,7 +10,8 @@ pipeline{
         timestamps()
       }
       steps{
-        sh 'npm -v'
+        echo "Hello ${params.NAME}"
+        echo "Biography: ${params.BIOGRAPHY}"
       }
     }
   }
