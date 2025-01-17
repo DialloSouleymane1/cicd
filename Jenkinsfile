@@ -1,35 +1,26 @@
-pipeline{
+pipeline {
   agent any
-  stages{
-    stage("Build"){
-      options{
-        timestamps()
+  matrix {
+    axes {
+      axis{
+        name 'PLATFORM'
+        values 'linux', 'windows'
       }
-      steps{
-        echo "Build succefully !"
+      axis {
+        name 'BROWSER'
+        values 'chrome', 'firefox'
       }
     }
-
-    stage("Deploy"){
-
-      options{
-        timestamps()
-      }
-      input {
-        message "Should we continue?"
-        ok "Yes, we should."
-        parameters {
-          string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should deploy this?')
-          string(name: 'VERSION', defaultValue: 'latest', description: 'Latest version to be deployed')
+    stages {
+      stage('build') {
+        steps {
+          echo "Building ${PLATFORM} on ${BROWSER}"
         }
-        submitter 'souley'
-        submitterParameter 'USER_SUBMIT'
       }
-      steps{
-        echo "should deploy user: ${PERSON}"
-        echo "Version to be deployed: ${VERSION}"
-        echo "User who deployed : ${USER_SUBMIT}"
-        echo "Deployed succefully !"
+      stage('Test') {
+        steps {
+          echo "Testing ${PLATFORM} on ${BROWSER}"
+        }
       }
     }
   }
