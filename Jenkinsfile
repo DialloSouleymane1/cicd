@@ -22,7 +22,7 @@ pipeline{
           string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should deploy this?')
           string(name: 'VERSION', defaultValue: 'latest', description: 'Latest version to be deployed')
         }
-        submiter 'admin'
+        submiter 'souley'
         submitterParameter 'USER_SUBMIT'
       }
       steps{
