@@ -4,8 +4,8 @@ pipeline{
     nodejs 'nodejs-22-06-0'
   }
   stages{
-    stage("Test agent docker"){
-      options {
+    stage("Build"){
+      options{
         timestamps()
       }
       steps{
