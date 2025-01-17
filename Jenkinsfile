@@ -23,7 +23,7 @@ pipeline{
           string(name: 'VERSION', defaultValue: 'latest', description: 'Latest version to be deployed')
         }
         submiter 'admin'
-        submitParameter 'USER_SUBMIT'
+        submitterParameter 'USER_SUBMIT'
       }
       steps{
         echo "should deploy user: ${params.PERSON}"
